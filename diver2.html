@@ -1,0 +1,40 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="config.css">
+</head>
+<title>Static Seq. Diagrams</title>
+<body>
+<div id="top">
+	<div id="header">
+		<h1>Static Synthesis of UML Sequence Diagrams - Supplemental Webpage</h1>
+	</div>
+	<div id="nav">
+		<u1>
+		<li><a href="index.html" class="navlink">Home</a></li>
+		<li><a href="diver.html" class="navlink">Diver Comparison</a></li>
+		<li><a href="diver2.html" class="navlink">Diver Differences</a></li>
+		</u1>
+	</div>
+	<div id="content">
+
+		<p>This page details differences in performance between Diver and our Sequence Diagram Generator.  Diver was able to correctly visualize the link between this method and the constructor for the class edu.umd.cs.findbugs.FindBugsCommandLine, which we were not, as this class threw an exception when we attempted to load it through soot.</p>
+		<fieldset>
+		  <legend>Diver Diagram Higher Level</legend>
+		  <img src = "imgs/DiverHigh.png">
+		</fieldset>
+		<p>However, the above diagram was the highest we were able to visualize through Diver, starting at the constructor for the class edu.umd.cs.findbugs.gui2.GUI2CommandLine, without providing information about where that constructor was called.  Our tool was able to visualize to the level of the static class constructor for the class edu.umd.cs.findbugs.gui2.Driver, which contains the code below:</p>
+		<fieldset>
+		  <legend>Source Code</legend>
+		  <img src = "imgs/CodeFragment2.png">
+		</fieldset>
+		<fieldset>
+		  <legend>Our Diagram Higher Level</legend>
+		  <img src = "imgs/clinit0Img2.png">
+		</fieldset>
+		<p>The top level diagram we produced: <a href="datafiles/clinit0.pdf">pdf</a> <a href="datafiles/clinit0.json">json</a><p>
+		<p>Notice the call to the constructor of GUI2CommandLine, and the internal call to super, which we were not able to fully traverse due to a soot exception.  We can potentially offer users a view of object creation from any level.  Additionally, our program produced 55 total potential execution path diagrams which we could query and sort as described in our paper.</p> <p>The zip of all output is provided <a href="datafiles/AllOutput.zip">here.</a>  The script we used to produce these outputs can be found in the Hypergraph/Hypergraph/scripts directory of the git repository linked on the <a href="index.html">home</a> page, however like all our scripts it contains some absolute directory references which would need to be changed to work in any environment.</p>
+	</div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,43 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="config.css">
+</head>
+<title>Static Seq. Diagrams</title>
+<body>
+<div id="top">
+	<div id="header">
+		<h1>Static Synthesis of UML Sequence Diagrams - Supplemental Webpage</h1>
+	</div>
+	<div id="nav">
+		<u1>
+		<li><a href="index.html" class="navlink">Home</a></li>
+		<li><a href="diver.html" class="navlink">Diver Comparison</a></li>
+		<li><a href="diver2.html" class="navlink">Diver Differences</a></li>
+		</u1>
+	</div>
+	<div id="content">
+		<p>This page provides a comparison between a single run of our Sequence Diagram generator (see <a href="index.html">home</a> for links to our code), and <a href="https://eclipsediver.wordpress.com/">Diver</a>, an eclipse plug-in which generates sequence diagrams from a trace of program execution.</p> 
+		<p>Our diver tests ran on version 0.5.0.201209240108, downloaded from the <a href="https://github.com/thechiselgroup/Diver">github repository</a>.  We used Eclipse Version: Luna Service Release 1a (4.4.1)</p>
+		<p>Additionally, since both our platform and diver analyze software, we required a piece of software to analyze.  We used the <a href="http://findbugs.sourceforge.net/">FindBugs</a> program as our target for analysis.</p>
+		
+<p>This should not be taken as a full feature comparison of these two programs, or a recommendation to use our program in production over Diver.  Our platform is an academic prototype, while Diver has been released for several years and undergone significant revision and bug fixing.  Additionally, I performed the majority of the code work on our project, while I only have a few weeks of experience using Diver, therefore I may not be able to use Diver to its fullest extent.  I performed the Diver work first, as I was unfamiliar with this program, and then attempted to use our tool to provide similar results, I did not attempt to find every case where our tool performs well, and their tool does not, or vice versa.</p>
+		<p>The Diver trace I used to create the diagram shown below can be downloaded <a href="datafiles/DiverTrace.dvt">here</a>.  There does not appear to be an obvious way to save or export a specific diagram from that trace without providing the entire thing.  I have not tested whether this exported trace can be re-imported correctly, it is simply what I am able to provide.</p>
+		<p>The Diver trace allows you to expand called methods in a sequence diagram to the desired level.  I will focus first on the method edu.umd.cs.findbugs.config.CommandLine.addOption(String, String, String) screenshotted below:</p>
+		<fieldset>
+		  <legend>Source Code</legend>
+		  <img src = "imgs/CodeFragment.png">
+		</fieldset>
+		<fieldset>
+		  <legend>Diver Diagram</legend>
+		  <img src = "imgs/DiverSeqFrag.png">
+		</fieldset>
+		<fieldset>
+		  <legend>Our Diagram</legend>
+		  <img src = "imgs/addOption0Img2.png">
+		</fieldset>
+		<p>Our pdf of the method can be found <a href="datafiles/addOption0.pdf">here</a>, and the JSON data <a href="datafiles/addOption0.json">here</a></p>
+		<p>There are several similarities, the ordering of the methods are naturally the same.  We are able to preserve more, but not all, variable names, notice specifically "option" and "argumentDesc".  We also maintain object instance information, allowing us to identify that the calls to length are calls on different distinct objects, as well as the two calls to the not-static method put on Map.  It could be argued that the default Diver display is more compact, however it is unclear from the display as screenshotted whether Diver would be able to provide accurate information on the fact that there are two distinct maps and strings</p>
+		</div>
+</div>
+</body>
+</html>

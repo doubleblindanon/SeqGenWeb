@@ -1,0 +1,27 @@
+u1 {list-style-type:square;}
+a.navlink:link{text-decoration:none;color:#FFF}
+a.navlink:visited{text-decoration:none;color:#FFF}
+a.navlink:active{text-decoration:none;color:#FFF}
+a.navlink:hover{text-decoration:none;color:#CCC}
+h1 {text-align:center;}
+p {text-align:justify;}
+#nav
+{
+	float:left;
+	width:250px;
+	background:#39F;
+	color:#FFF;
+	font-weight:bold;
+	border-width:medium;
+	border-style:solid;
+	border-color:#FFF;
+}
+
+#content
+{
+	/*position:absolute;*/
+	left:260px;
+	border-width:thick;
+	border-style:solid;
+	border-color:#FFF;
+}
